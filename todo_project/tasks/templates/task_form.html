@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block content %}
+  <h2 class="mb-4">{% if task %}Edit{% else %}Create{% endif %} Task</h2>
+  <form method="post" class="card p-4 shadow-sm">
+    {% csrf_token %}
+    <div class="mb-3">
+      <label class="form-label">Title:</label>
+      <input type="text" name="title" class="form-control" value="{{ task.title|default:'' }}">
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Description:</label>
+      <textarea name="description" class="form-control">{{ task.description|default:'' }}</textarea>
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Due Date:</label>
+      <input type="date" name="due_date" class="form-control" value="{{ task.due_date|date:'Y-m-d' }}">
+    </div>
+    {% if task %}
+    <div class="form-check mb-3">
+      <input type="checkbox" name="completed" class="form-check-input" {% if task.completed %}checked{% endif %}>
+      <label class="form-check-label">Completed</label>
+    </div>
+    {% endif %}
+    <button type="submit" class="btn btn-success">Save</button>
+    <br> 
+    <a href="{% url 'task_list' %}" class="btn btn-secondary">Back</a>
+  </form>
+{% endblock %}
