@@ -53,7 +53,7 @@ MIDDLEWARE = [
 
 ]
 
-ROOT_URLCONF = 'todo_project.urls'
+ROOT_URLCONF = 'taskmanager.urls'
 
 TEMPLATES = [
     {
@@ -71,8 +71,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'todo_project.wsgi.application'
-
+WSGI_APPLICATION = 'taskmanager.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
